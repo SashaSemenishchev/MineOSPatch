@@ -15,7 +15,7 @@ else
 end
 
 local workspace = system.getWorkspace()
-local container = GUI.addBackgroundContainer(workspace, true, true, "Fuck The Rain")
+local container = GUI.addBackgroundContainer(workspace, true, true, "Turn off the rain")
 
 local lines = text.wrap("This script works as background daemon and checks rain condition in specified interval", 36)
 container.layout:addChild(GUI.textBox(1, 1, 36, #lines, nil, 0xA5A5A5, lines, 1, 0, 0))
