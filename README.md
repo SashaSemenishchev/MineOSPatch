@@ -16,11 +16,13 @@ Hello again, dear friend. Thank you for being with us and supporting our ideas t
 -   Animations, wallpapers, screensavers, color schemes and huge customization possibilities
 -   Open source system API and detailed illustrated documentations
 
+this is an a patch version by MrFunny aka SashaSemenishchev
+
 ## How to install?
 
 The easiest way is to use default **pastebin** script. Insert OpenOS floppy disk to computer, insert an Internet Card, turn computer on and type the following to console:
 
-	pastebin run 0nm5b1ju
+	unkown
 
 After a moment, a nice system installer will be shown. You will be prompted to select your preferred language, select and format a boot volume, create a user profile and customize some settings. After that, the system will be successfully installed.
 
