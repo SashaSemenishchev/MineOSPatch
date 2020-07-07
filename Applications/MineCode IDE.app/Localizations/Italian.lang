@@ -54,7 +54,7 @@
 	color = "Colore",
 	toggleTopToolBar = "Toggle barra degli strumenti in alto",
 	find = "Trovare",
-	findSomeShit = "Troviamo un po ' di roba.…",
+	findSomeShit = "Ricerca",
 	cut = "Tagliare",
 	copy = "Copia",
 	paste = "Incollare",

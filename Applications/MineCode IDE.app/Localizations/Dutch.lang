@@ -54,7 +54,7 @@
 	color = "Kleur",
 	toggleTopToolBar = "Schakel bovenste werkbalk in/uit",
 	find = "Vind",
-	findSomeShit = "Laten we gaan zoeken…",
+	findSomeShit = "Zoeken",
 	cut = "Knip",
 	copy = "Kopieër",
 	paste = "Plak",

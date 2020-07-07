@@ -54,7 +54,7 @@
 	color = "Farbig",
 	toggleTopToolBar = "Toggle Symbolleiste anzeigen",
 	find = "Finden",
-	findSomeShit = "Lass uns etwas Scheiße finden…",
+	findSomeShit = "Suche",
 	cut = "Schneiden",
 	copy = "Kopieren",
 	paste = "Einfügen",
