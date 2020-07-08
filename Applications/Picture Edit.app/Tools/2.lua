@@ -8,7 +8,7 @@ local tool = {}
 
 tool.shortcut = "Mov"
 tool.keyCode = 47
-tool.about = "Move tool allows you to move image as you wish. But be careful: large images will take a time to shift and redraw. Hello, shitty GPUs!"
+tool.about = "Move tool allows you to move image as you wish. But be careful: large images will take a time to shift and redraw"
 
 local xOld, yOld
 tool.eventHandler = function(workspace, object, e1, e2, e3, e4)

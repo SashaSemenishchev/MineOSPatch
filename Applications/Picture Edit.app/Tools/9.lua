@@ -10,7 +10,7 @@ local tool = {}
 
 tool.shortcut = "Bra"
 tool.keyCode = 33
-tool.about = "Braille tool allows you to draw pixels with Braille symbols on your image. Select preferred mini-pixels via menu above, configure transparency affecting and \"Let's go fellas!\""
+tool.about = "Braille tool allows you to draw pixels with Braille symbols on your image. Select preferred mini-pixels via menu above and configure transparency affecting"
 
 local layout = GUI.layout(1, 1, 1, 8, 1, 1)
 local container, char, step = layout:addChild(GUI.container(1, 1, 8, 8)), " ", false

@@ -935,8 +935,113 @@ function GUI.alert(...)
 		end
 	end
 	if #args == 0 then args[1] = "nil" end
+	-- 06030000FF 0000FF 00F7FF▟00F7FF▙0000FF 0000FF 0000FF 00F7FF▟F7FF00 F7FF00 00F7FF▙0000FF 00F7FF▟F7FF00EF7FF00rF7FF00rF7FF00oF7FF00r00F7FF▙
 
-	local sign = image.fromString([[06030000FF 0000FF 00F7FF▟00F7FF▙0000FF 0000FF 0000FF 00F7FF▟F7FF00 F7FF00 00F7FF▙0000FF 00F7FF▟F7FF00EF7FF00rF7FF00rF7FF00oF7FF00r00F7FF▙]])
+	local sign = image.fromString([[0A050000FF 0000FF 0000FF 0000FF 00F6FF▲0000FF 0000FF 0000FF 0000FF 0000FF 0000FF 0000FF 0000FF 00F6FF◢FFF600 00F6FF◣0000FF 0000FF 0000FF 0000FF 0000FF 0000FF 00F6FF◢F6FF00 FFF600 F6FF00 00F6FF◣0000FF 0000FF 0000FF 0000FF 00F6FF◢F6FF00 F6FF00 F6FF00 F6FF00 F6FF00 00F6FF◣0000FF 0000FF 00F6FF◢F6FF00 F6FF00 F6FF00 FFF600 F6FF00 F6FF00 F6FF00 00F6FF◣0000FF ]])
+	local offset = 2
+	local lines = #args > 1 and "\"" .. table.concat(args, "\", \"") .. "\"" or args[1]
+	local bufferWidth, bufferHeight = screen.getResolution()
+	local width = math.floor(bufferWidth * 0.5)
+	local textWidth = width - image.getWidth(sign) - 2
+
+	lines = text.wrap(lines, textWidth)
+	local height = image.getHeight(sign)
+	if #lines + 2 > height then
+		height = #lines + 2
+	end
+
+	local workspace = GUI.workspace(1, math.floor(bufferHeight / 2 - height / 2), bufferWidth, height + offset * 2)
+	local oldPixels = screen.copy(workspace.x, workspace.y, workspace.width, workspace.height)
+
+	local x, y = math.floor(bufferWidth / 2 - width / 2), offset + 1
+	workspace:addChild(GUI.panel(1, 1, workspace.width, workspace.height, 0x1D1D1D))
+	workspace:addChild(GUI.image(x, y, sign))
+	workspace:addChild(GUI.textBox(x + image.getWidth(sign) + 2, y, textWidth, #lines, 0x1D1D1D, 0xE1E1E1, lines, 1, 0, 0)).eventHandler = nil
+	local buttonWidth = 10
+	local button = workspace:addChild(GUI.roundedButton(x + image.getWidth(sign) + textWidth - buttonWidth + 2, workspace.height - offset, buttonWidth, 1, 0x3366CC, 0xE1E1E1, 0xE1E1E1, 0x3366CC, "OK"))
+	
+	button.onTouch = function()
+		workspace:stop()
+		screen.paste(workspace.x, workspace.y, oldPixels)
+		screen.update()
+	end
+
+	workspace.eventHandler = function(workspace, object, e1, e2, e3, e4, ...)
+		if e1 == "key_down" and e4 == 28 then
+			button.animated = false
+			button:press(workspace, object, e1, e2, e3, e4, ...)
+		end
+	end
+
+	workspace:draw(true)
+	workspace:start()
+end
+
+function GUI.error(...)
+	local args = {...}
+	for i = 1, #args do
+		if type(args[i]) == "table" then
+			args[i] = text.serialize(args[i], true)
+		else
+			args[i] = tostring(args[i])
+		end
+	end
+	if #args == 0 then args[1] = "nil" end
+	-- 06030000FF 0000FF 00F7FF▟00F7FF▙0000FF 0000FF 0000FF 00F7FF▟F7FF00 F7FF00 00F7FF▙0000FF 00F7FF▟F7FF00EF7FF00rF7FF00rF7FF00oF7FF00r00F7FF▙
+
+	local sign = image.fromString([[0A05FFFF00 FFFF00 D90000 D90000 D90000 D90000 D90000 D90000 FFFF00 FFFF00 D90000 D90000 FFFF00 FFFF00 D90000 D90000 FFFF00 FFFF00 D90000 D90000 D90000 D90000 D90000 D9FF00 FFFF00 FFFF00 D90000 D90000 D90000 D90000 D90000 D90000 FFFF00 FFFF00 D90000 D90000 FFFF00 FFFF00 D90000 D90000 FFFF00 FFFF00 D90000 D90000 D90000 D90000 D90000 D90000 FFFF00 FFFF00 ]])
+	local offset = 2
+	local lines = #args > 1 and "\"" .. table.concat(args, "\", \"") .. "\"" or args[1]
+	local bufferWidth, bufferHeight = screen.getResolution()
+	local width = math.floor(bufferWidth * 0.5)
+	local textWidth = width - image.getWidth(sign) - 2
+
+	lines = text.wrap(lines, textWidth)
+	local height = image.getHeight(sign)
+	if #lines + 2 > height then
+		height = #lines + 2
+	end
+
+	local workspace = GUI.workspace(1, math.floor(bufferHeight / 2 - height / 2), bufferWidth, height + offset * 2)
+	local oldPixels = screen.copy(workspace.x, workspace.y, workspace.width, workspace.height)
+
+	local x, y = math.floor(bufferWidth / 2 - width / 2), offset + 1
+	workspace:addChild(GUI.panel(1, 1, workspace.width, workspace.height, 0x1D1D1D))
+	workspace:addChild(GUI.image(x, y, sign))
+	workspace:addChild(GUI.textBox(x + image.getWidth(sign) + 2, y, textWidth, #lines, 0x1D1D1D, 0xE1E1E1, lines, 1, 0, 0)).eventHandler = nil
+	local buttonWidth = 10
+	local button = workspace:addChild(GUI.roundedButton(x + image.getWidth(sign) + textWidth - buttonWidth + 2, workspace.height - offset, buttonWidth, 1, 0x3366CC, 0xE1E1E1, 0xE1E1E1, 0x3366CC, "OK"))
+	
+	button.onTouch = function()
+		workspace:stop()
+		screen.paste(workspace.x, workspace.y, oldPixels)
+		screen.update()
+	end
+
+	workspace.eventHandler = function(workspace, object, e1, e2, e3, e4, ...)
+		if e1 == "key_down" and e4 == 28 then
+			button.animated = false
+			button:press(workspace, object, e1, e2, e3, e4, ...)
+		end
+	end
+
+	workspace:draw(true)
+	workspace:start()
+end
+
+function GUI.info(...)
+	local args = {...}
+	for i = 1, #args do
+		if type(args[i]) == "table" then
+			args[i] = text.serialize(args[i], true)
+		else
+			args[i] = tostring(args[i])
+		end
+	end
+	if #args == 0 then args[1] = "nil" end
+	-- 06030000FF 0000FF 00F7FF▟00F7FF▙0000FF 0000FF 0000FF 00F7FF▟F7FF00 F7FF00 00F7FF▙0000FF 00F7FF▟F7FF00EF7FF00rF7FF00rF7FF00oF7FF00r00F7FF▙
+
+	local sign = image.fromString([[0A050E0000 0E0000 0E0000 0E0000 FF0E00 FF0E00 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 0E0E00 0E0E00 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 FF0E00 FF0E00 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 0E0000 FF0E00 FF0E00 0E0000 0E0000 0E0000 0E0000 0EF600 0EF600 0EF600 0EF600 FF0E00 FF0E00 0EF600 0EF600 0EF600 0EF600 ]])
 	local offset = 2
 	local lines = #args > 1 and "\"" .. table.concat(args, "\", \"") .. "\"" or args[1]
 	local bufferWidth, bufferHeight = screen.getResolution()

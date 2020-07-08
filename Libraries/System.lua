@@ -2427,6 +2427,8 @@ function system.updateDesktop()
 			"Alexey Smirnov, vk.com/id23897419",
 			"Timofey Shestakov, vk.com/id113499693",
 			" ",
+			"Edit by MrFunny, github.com/SashaSemenishchev/",
+			" ",
 			"UX-advisers:",
 			" ",
 			"Nikita Yarichev, vk.com/id65873873",
