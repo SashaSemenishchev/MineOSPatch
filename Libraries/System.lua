@@ -2416,7 +2416,7 @@ function system.updateDesktop()
 		container.layout:removeChildren()
 		
 		local lines = {
-			"MineOS 2.0.5 (mrfunny.me)",
+			"MineOS 1.0.6 (mrfunny.me)",
 			"Copyright © 2014-" .. os.date("%Y", system.getTime()),
 			" ",
 			"Developers:",
