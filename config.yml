@@ -1,0 +1,16 @@
+# Tutorial
+
+guild-id: "670351398726139905" # Your guild id
+# this plugins work with webhooks, so how it works, read the tutorial :)
+bot-token: "NjYwNTcxNzk2NDc0NTYwNTIz.XgezbQ.6I6BHGM4KtO2DLUEc95yMy_3k8A"
+
+main-channel:
+  name: "интегрированный"
+  prefix: "!"
+  webhook-url: "https://discordapp.com/api/webhooks/766585689030000640/QRhO0IFjV-5lYs8cQzL1OEByTgDxzPh6SUJyZk1KZDpAeigJkwQBid34sj_1zZFFg97_"
+
+channels:
+
+
+# here is discord connection, do not edit anything!
+discords:
